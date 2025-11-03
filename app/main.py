@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from app.controllers.auth_controller import AuthController
+from app.controllers import AuthController, UserController
 
 tags_metadata = [
     {
@@ -7,15 +7,16 @@ tags_metadata = [
         "description": "Operações de autenticação: login, verificação de token, etc.",
     },
     {
-        "name": "usuários",
+        "name": "User",
         "description": "Gerenciamento de usuários: criação, listagem, etc.",
     },
 ]
 
 app = FastAPI(
-        title="Async File Processing RAG API",
-        description="API para processamento de documentos para preparação para RAG",
+        title="Auth API",
+        description="API para autenticação de usuários",
         version="alpha 0.0",
         openapi_tags=tags_metadata      
               )
 app.include_router(AuthController.router)
+app.include_router(UserController.router)
