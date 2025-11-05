@@ -3,7 +3,7 @@ from sqlalchemy.orm import sessionmaker, Session
 from sqlalchemy.engine.url import make_url
 from threading import Lock
 from ..models import Base
-from ..config import Settings
+from ..settings import Settings
 
 
 class Database:

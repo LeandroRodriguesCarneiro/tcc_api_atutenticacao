@@ -1,6 +1,6 @@
 from jwt import JWT, jwk_from_dict, exceptions
 from time import time
-from app.config import Settings
+from app.settings import Settings
 
 class JWTHandler:
     def __init__(self):
