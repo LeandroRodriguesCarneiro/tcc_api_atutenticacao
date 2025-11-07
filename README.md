@@ -20,28 +20,41 @@ A API gera tokens JWT exclusivos para autenticação e renovação. Quando um no
 ## Como Utilizar
 1. Buildar a imagem docker:
    
-   docker build -t tcc_api_autenticacao:latest .
+```bash
+docker build -t tcc_api_autenticacao:latest .
+```
 
-2. Gerar chave secreta:
-   - No Linux:
-   
+
+2. **Gerar chave secreta:**
+
+   - **No Linux:**
+     
      - Base64, 32 bytes (256 bits):
-
+     
+       ```
        openssl rand -base64 32
+       ```
 
      - Ou (sem OpenSSL):
 
+       ```
        head -c 32 /dev/urandom | base64
+       ```
 
-   - No Windows:
-     
-       $bytes = New-Object byte[] 32
-        [System.Security.Cryptography.RandomNumberGenerator]::Create().GetBytes($bytes)
-        [Convert]::ToBase64String($bytes)
-     
-  3. Rodar a imagem docker:
-       
+   - **No Windows (PowerShell):**
+
+     ```
+     $bytes = New-Object byte[] 32
+     [System.Security.Cryptography.RandomNumberGenerator]::Create().GetBytes($bytes)
+     [Convert]::ToBase64String($bytes)
+     ```
+
+3. **Rodar a imagem Docker (substitua pelos seus dados):**
+
+
+```       
   docker run -d -e SECRET_KEY="Colar aqui a chave gerada anteriormente" -e ALGORITHM="HS256" -e DB_HOST="Colar aqui o host do seu banco postgre" -e DB_PORT="5432" -e DB_USER="Seu usuário do banco" -e DB_PSW="Sua senha do banco de dados" -e     DB_DATABASE="Nome do seu banco de dados" -p 8000:8000 tcc_api_autenticacao:latest
+```
 
 4. Acesse a documentação interativa da API (Swagger UI) navegando para `http://localhost:8000/docs`.
 
