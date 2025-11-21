@@ -56,7 +56,15 @@ docker build -t tcc_api_autenticacao:latest .
   docker run -d -e SECRET_KEY="Colar aqui a chave gerada anteriormente" -e ALGORITHM="HS256" -e DB_HOST="Colar aqui o host do seu banco postgre" -e DB_PORT="5432" -e DB_USER="Seu usuário do banco" -e DB_PSW="Sua senha do banco de dados" -e     DB_DATABASE="Nome do seu banco de dados" -p 8000:8000 tcc_api_autenticacao:latest
 ```
 
-4. Acesse a documentação interativa da API (Swagger UI) navegando para `http://localhost:8000/docs`.
+4. **Criar um usuário:**
+
+   
+Precisa criar o primeiro usuário da aplicação para isso podemos usar um comando ao abrir o container execute o comando a baixo:
+```
+  python -m app.start_user 
+```
+
+5. Acesse a documentação interativa da API (Swagger UI) navegando para `http://localhost:8000/docs`.
 
 ## Importância para o Projeto
 
@@ -74,3 +82,4 @@ Contribuições são bem-vindas! Para sugestões, melhorias ou relatórios de bu
 
 Leandro Rodrigues Carneiro  
 [GitHub](https://github.com/LeandroRodriguesCarneiro) | Contato: leandrorodrigues131531@gmail.com
+
