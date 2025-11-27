@@ -25,7 +25,7 @@ class AuthController:
 
     @router.post(
         "/token",
-        tags=["auth"],
+        tags=["Auth"],
         summary="Login de usuário",
         description="Autentica um usuário com email e senha. Retorna um token JWT se autenticado.",
         responses={
@@ -55,7 +55,7 @@ class AuthController:
         token = auth_service.authenticate_user(username, password)
         return {"access_token": token, "token_type": "bearer"}
 
-    @router.post("/refresh", tags=["auth"], summary="Atualiza o access token usando o refresh token")
+    @router.post("/refresh", tags=["Auth"], summary="Atualiza o access token usando o refresh token")
     async def refresh_token(
         refresh_token: str = Form(...),
         auth_service: AuthService = Depends(get_auth_service),

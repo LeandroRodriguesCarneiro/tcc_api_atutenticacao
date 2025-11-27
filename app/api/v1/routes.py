@@ -21,6 +21,7 @@ router.include_router(
 
 @router.get(
     '/health', 
+    tags=['V1'],
     status_code=status.HTTP_200_OK,
     summary="Verificar se a API está online",
     description="Verificar se a API está online e operando",

@@ -81,7 +81,7 @@ class UserController:
 
     @router.get(
         "/me",
-        tags=["auth"],
+        tags=["User"],
         summary="Obter dados do usuário",
         description="Retorna os dados do usuário autenticado.",
         responses={
