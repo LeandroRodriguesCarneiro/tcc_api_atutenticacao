@@ -1,5 +1,11 @@
 from fastapi import FastAPI
+from starlette.middleware.cors import CORSMiddleware
 from app.api import v1_router
+
+origins = [
+    "http://localhost:3000",
+    "https://front.tcc.com.br",
+]
 
 tags_metadata = [
     {
@@ -22,5 +28,13 @@ app = FastAPI(
         version="alpha 0.0",
         openapi_tags=tags_metadata      
               )
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 app.include_router(v1_router, prefix="/api/v1")
